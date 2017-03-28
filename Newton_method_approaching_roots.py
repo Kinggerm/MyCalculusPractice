@@ -4,12 +4,11 @@ from sympy import *
 x = Symbol('x')
 y = eval(input('Function='))
 next_x = float(input('x0='))
-iteration = int(input('iterations='))
-
 function_y = lambdify(x, y)
 function_y_prime = lambdify(x, y.diff(x))
-for i in range(iteration):
-    # simplified core equation in Newton's method
-    next_x = next_x - function_y(next_x)/function_y_prime(next_x)
-print('x'+str(iteration)+'='+str(next_x))  # +'~'+str(Fraction(next_x)))
-
+epsilon = float(input('epsilon is: '))
+count = 1
+while abs(fuction_y(next_x)) > epsilon and count <= 100:
+    next_x = next_x - fuction_y(next_x)/fuction_y_prime(next_x)
+    count += 1
+print('number of iteration:' + str(count) + ' Estimate:' + str(next_x)) 
